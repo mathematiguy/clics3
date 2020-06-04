@@ -1,6 +1,6 @@
 [submodule "submodules/glottolog"]
 	path = submodules/glottolog
-	url = git@github.com:glottolog/glottolog.git
+	url = git@github.com:mathematiguy/glottolog.git
 [submodule "submodules/concepticon-data"]
 	path = submodules/concepticon-data
 	url = git@github.com:concepticon/concepticon-data.git
