@@ -30,5 +30,3 @@ USER clics
 WORKDIR /home/clics
 COPY submodules /home/clics/submodules
 COPY .config /home/clics/.config
-
-RUN clics load --glottolog-version v4.0 --concepticon-version v2.2.0
