@@ -104,7 +104,6 @@ venv.bak/
 .mypy_cache/
 
 # Added by me
-clics.sqlite
 graphs/
 .bash_history
 **/.#*

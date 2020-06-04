@@ -7,10 +7,18 @@ GID ?= $(shell id -g)
 DOCKER_ARGS ?= 
 GIT_TAG ?= $(shell git log --oneline | head -n1 | awk '{print $$1}')
 
-all: load
+all: graphs/network-3-families.gml
 
-load: .config/cldf/catalog.ini
-	$(RUN) clics load --glottolog-version v4.0 --concepticon-version v2.2.0
+cluster:
+	$(RUN) clics --seed 42 -t 3 -f families makeapp
+
+graphs/network-3-families.gml: .loaded
+	$(RUN) clics -t 3 -f families colexification --show 20 --format pipe
+
+clics3.sqlite: .config/cldf/catalog.ini
+	$(RUN) bash -c 'clics load --glottolog-version v4.0 --concepticon-version v2.2.0 && \
+         clics datasets && \
+         touch $@'
 
 .config/cldf/catalog.ini:
 	$(RUN) cldfbench catconfig --glottolog submodules/glottolog --concepticon submodules/concepticon-data --clts submodules/clts
